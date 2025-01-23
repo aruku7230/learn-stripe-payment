@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout Succeeded - Pay with Stripe</title>
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+  <h1>Checkout Succeeded</h1>
+  <p>PaymentIntent Id: <span id="paymentIntentId"></span></p>
+
+  <script>
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const paramValue = urlParams.get('payment_intent');
+    const paramText = paramValue == null ? 'Not found' : paramValue;
+    document.getElementById('paymentIntentId').textContent = paramText;
+  </script>
+</body>
+</html>
